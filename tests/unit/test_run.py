@@ -44,3 +44,13 @@ def test_logging_setup(caplog, on):
         assert not caplog.records
     else:
         assert caplog.records
+
+
+def test_dash_S(capsys):
+    with pytest.raises(SystemExit) as context:
+        cli_run(args=["-S", "-c", "import os; print('ok')"])
+    assert context.value.code == 0
+
+    out, err = capsys.readouterr()
+    assert not err
+    assert out == "ok"
