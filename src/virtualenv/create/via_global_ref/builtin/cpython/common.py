@@ -34,7 +34,7 @@ class CPythonPosix(CPython, PosixSupports):
         targets = OrderedDict(
             (i, None) for i in ["python", "python{}".format(major), "python{}.{}".format(major, minor), host_exe.name]
         )
-        must = RefMust.COPY if interpreter.version_info.major == 2 else RefMust.NA
+        must = RefMust.NA
         yield host_exe, list(targets.keys()), must, RefWhen.ANY
 
 
